@@ -37,6 +37,10 @@ function sendError(res, error) {
   return res.status(status).json({ message });
 }
 
+function logRouteError(routeName, error) {
+  console.error(`[${routeName}]`, error);
+}
+
 app.get("/", (_req, res) => {
   const html = `
     <!DOCTYPE html>
@@ -143,6 +147,7 @@ app.post("/login", async (req, res) => {
     const user = await loginUser(email, password, role);
     return res.json({ user });
   } catch (error) {
+    logRouteError("POST /login", error);
     return sendError(res, error);
   }
 });
@@ -152,6 +157,7 @@ app.get("/stores", async (_req, res) => {
     const stores = await listStores();
     return res.json({ stores });
   } catch (error) {
+    logRouteError("GET /stores", error);
     return sendError(res, error);
   }
 });
@@ -161,6 +167,7 @@ app.get("/stores/:id", async (req, res) => {
     const store = await getStoreDetails(req.params.id);
     return res.json({ store });
   } catch (error) {
+    logRouteError("GET /stores/:id", error);
     return sendError(res, error);
   }
 });
@@ -174,6 +181,7 @@ app.patch("/stores/:id/status", async (req, res) => {
     });
     return res.json({ store });
   } catch (error) {
+    logRouteError("PATCH /stores/:id/status", error);
     return sendError(res, error);
   }
 });
@@ -183,6 +191,7 @@ app.get("/stores/:id/products", async (req, res) => {
     const payload = await listStoreProducts(req.params.id);
     return res.json(payload);
   } catch (error) {
+    logRouteError("GET /stores/:id/products", error);
     return sendError(res, error);
   }
 });
@@ -198,6 +207,7 @@ app.post("/stores/:id/products", async (req, res) => {
     });
     return res.status(201).json(payload);
   } catch (error) {
+    logRouteError("POST /stores/:id/products", error);
     return sendError(res, error);
   }
 });
@@ -207,6 +217,7 @@ app.get("/cart", async (req, res) => {
     const cart = await getCartForUser(req.query.userId);
     return res.json({ cart });
   } catch (error) {
+    logRouteError("GET /cart", error);
     return sendError(res, error);
   }
 });
@@ -221,6 +232,7 @@ app.post("/cart/products", async (req, res) => {
     });
     return res.status(201).json({ cart });
   } catch (error) {
+    logRouteError("POST /cart/products", error);
     return sendError(res, error);
   }
 });
@@ -233,6 +245,7 @@ app.delete("/cart/products/:productId", async (req, res) => {
     });
     return res.json({ cart });
   } catch (error) {
+    logRouteError("DELETE /cart/products/:productId", error);
     return sendError(res, error);
   }
 });
@@ -246,6 +259,7 @@ app.post("/orders", async (req, res) => {
     });
     return res.status(201).json({ order });
   } catch (error) {
+    logRouteError("POST /orders", error);
     return sendError(res, error);
   }
 });
@@ -255,6 +269,7 @@ app.get("/orders/mine", async (req, res) => {
     const orders = await listOrdersForConsumer(req.query.userId);
     return res.json({ orders });
   } catch (error) {
+    logRouteError("GET /orders/mine", error);
     return sendError(res, error);
   }
 });
@@ -264,6 +279,7 @@ app.get("/orders/available", async (req, res) => {
     const orders = await listAvailableOrders(req.query.userId);
     return res.json({ orders });
   } catch (error) {
+    logRouteError("GET /orders/available", error);
     return sendError(res, error);
   }
 });
@@ -273,6 +289,7 @@ app.get("/orders/accepted", async (req, res) => {
     const orders = await listAcceptedOrders(req.query.userId);
     return res.json({ orders });
   } catch (error) {
+    logRouteError("GET /orders/accepted", error);
     return sendError(res, error);
   }
 });
@@ -282,6 +299,7 @@ app.get("/orders/:id", async (req, res) => {
     const order = await getOrderForUser(req.params.id, req.query.userId);
     return res.json({ order });
   } catch (error) {
+    logRouteError("GET /orders/:id", error);
     return sendError(res, error);
   }
 });
@@ -294,6 +312,7 @@ app.patch("/orders/:id/accept", async (req, res) => {
     });
     return res.json({ order });
   } catch (error) {
+    logRouteError("PATCH /orders/:id/accept", error);
     return sendError(res, error);
   }
 });
