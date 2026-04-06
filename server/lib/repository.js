@@ -767,13 +767,13 @@ export async function listOrdersForConsumer(userId) {
 
   return getOrdersByQuery(
     `
-     od as "paymentMethod",
-        address, select
+      select
         id,
         consumer_id as "consumerId",
         store_id as "storeId",
         delivery_id as "deliveryId",
-        payment_meth
+        payment_method as "paymentMethod",
+        address,
         status,
         created_at as "createdAt"
       from orders
