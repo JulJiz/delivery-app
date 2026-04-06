@@ -1,0 +1,261 @@
+:root {
+  --bg: #fcf7ff;
+  --surface: rgba(255, 255, 255, 0.9);
+  --surface-strong: #ffffff;
+  --border: rgba(142, 99, 194, 0.24);
+  --text: #2d2140;
+  --muted: #6b5d7e;
+  --primary: #7c3aed;
+  --primary-dark: #5b21b6;
+  --secondary: #ede9fe;
+  --shadow: 0 20px 48px rgba(108, 63, 174, 0.14);
+  --success-bg: #e8f8ef;
+  --success-text: #0f7b41;
+  --error-bg: #fdecec;
+  --error-text: #b42318;
+  --info-bg: #f1efff;
+  --info-text: #5b21b6;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Book Antiqua", "Trebuchet MS", sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(circle at top left, rgba(139, 92, 246, 0.14), transparent 24%),
+    linear-gradient(180deg, #fffeff 0%, var(--bg) 100%);
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+button {
+  border: none;
+  border-radius: 14px;
+  padding: 12px 16px;
+  cursor: pointer;
+  background: var(--primary);
+  color: white;
+  transition: transform 0.18s ease, opacity 0.18s ease;
+}
+
+button:hover {
+  transform: translateY(-1px);
+}
+
+button.secondary {
+  background: var(--secondary);
+  color: var(--text);
+}
+
+a {
+  color: inherit;
+}
+
+.hero,
+.page {
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto;
+}
+
+.hero {
+  padding: 42px 0 24px;
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+.top-links {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.top-links a {
+  text-decoration: none;
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.75);
+  border: 1px solid var(--border);
+}
+
+.page {
+  padding-bottom: 48px;
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  box-shadow: var(--shadow);
+  padding: 24px;
+}
+
+.login-card,
+.user-card {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  align-items: center;
+}
+
+.message {
+  padding: 14px 18px;
+  border-radius: 16px;
+  margin: 18px 0;
+  font-weight: 600;
+}
+
+.message[data-tone="success"] {
+  background: var(--success-bg);
+  color: var(--success-text);
+}
+
+.message[data-tone="error"] {
+  background: var(--error-bg);
+  color: var(--error-text);
+}
+
+.message[data-tone="info"] {
+  background: var(--info-bg);
+  color: var(--info-text);
+}
+
+.eyebrow {
+  margin: 0 0 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 0.74rem;
+  color: var(--primary-dark);
+}
+
+.hero h1,
+.card h2 {
+  margin: 0;
+}
+
+.hero-copy,
+.hint,
+.order-card p,
+.accepted-card p,
+.accepted-note,
+.detail-card p {
+  color: var(--muted);
+}
+
+.form-grid {
+  display: grid;
+  gap: 14px;
+  width: min(360px, 100%);
+}
+
+.form-grid label {
+  display: grid;
+  gap: 8px;
+  font-weight: 600;
+}
+
+.form-grid input {
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: var(--surface-strong);
+  padding: 12px 14px;
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.app-shell {
+  display: grid;
+  gap: 24px;
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 0.95fr 1.05fr;
+  gap: 24px;
+}
+
+.section-header {
+  margin-bottom: 18px;
+}
+
+.order-list,
+.accepted-grid {
+  display: grid;
+  gap: 14px;
+}
+
+.order-card,
+.accepted-card,
+.detail-card {
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(165, 132, 217, 0.25);
+  padding: 18px;
+}
+
+.order-card.active {
+  outline: 2px solid rgba(124, 58, 237, 0.3);
+}
+
+.order-top,
+.card-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+}
+
+.card-actions {
+  margin-top: 14px;
+}
+
+.status {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  padding: 6px 10px;
+  font-size: 0.86rem;
+  font-weight: 700;
+}
+
+.status.available {
+  background: #f3e8ff;
+  color: #6d28d9;
+}
+
+.status.accepted {
+  background: #e8f8ef;
+  color: #0f7b41;
+}
+
+.items-block ul {
+  margin: 10px 0 0;
+  padding-left: 18px;
+}
+
+.empty-state {
+  color: var(--muted);
+}
+
+@media (max-width: 900px) {
+  .hero,
+  .login-card,
+  .user-card,
+  .dashboard-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+}

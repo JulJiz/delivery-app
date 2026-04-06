@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cliente Repartidor | Delivery App</title>
+    <link rel="stylesheet" href="/delivery/style.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <div>
+        <p class="eyebrow">Cliente 3</p>
+        <h1>App de repartidor</h1>
+        <p class="hero-copy">
+          Inicia sesion, revisa las ordenes disponibles, consulta el detalle y acepta pedidos.
+        </p>
+      </div>
+      <nav class="top-links">
+        <a href="/">Inicio</a>
+        <a href="/consumer">App consumidor</a>
+        <a href="/store">App tienda</a>
+      </nav>
+    </header>
+
+    <main class="page">
+      <section class="card login-card">
+        <div>
+          <h2>Ingreso</h2>
+          <p>Usa el repartidor de prueba para simular la recepcion de pedidos.</p>
+          <p class="hint">rider@demo.com / 123456</p>
+        </div>
+        <form id="login-form" class="form-grid">
+          <label>
+            Email
+            <input type="email" name="email" value="rider@demo.com" required />
+          </label>
+          <label>
+            Password
+            <input type="password" name="password" value="123456" required />
+          </label>
+          <button type="submit">Entrar como repartidor</button>
+        </form>
+      </section>
+
+      <p id="message" class="message" hidden></p>
+
+      <section id="app-shell" class="app-shell" hidden>
+        <section class="card user-card">
+          <div>
+            <p class="eyebrow">Sesion activa</p>
+            <h2 id="user-name">Repartidor</h2>
+            <p id="user-email"></p>
+          </div>
+          <div class="actions">
+            <button id="refresh-dashboard" type="button">Recargar datos</button>
+            <button id="logout-button" type="button" class="secondary">Cerrar sesion</button>
+          </div>
+        </section>
+
+        <div class="dashboard-grid">
+          <section class="card">
+            <div class="section-header">
+              <div>
+                <p class="eyebrow">Disponibles</p>
+                <h2>Ordenes por aceptar</h2>
+              </div>
+            </div>
+            <div id="available-orders" class="order-list empty-state">No hay ordenes disponibles.</div>
+          </section>
+
+          <section class="card">
+            <div class="section-header">
+              <div>
+                <p class="eyebrow">Detalle</p>
+                <h2>Orden seleccionada</h2>
+              </div>
+            </div>
+            <div id="order-detail" class="detail-card empty-state">
+              Selecciona una orden para ver el detalle completo.
+            </div>
+          </section>
+        </div>
+
+        <section class="card">
+          <div class="section-header">
+            <div>
+              <p class="eyebrow">Aceptadas</p>
+              <h2>Mis ordenes aceptadas</h2>
+            </div>
+          </div>
+          <div id="accepted-orders" class="accepted-grid empty-state">Todavia no has aceptado ordenes.</div>
+        </section>
+      </section>
+    </main>
+
+    <script src="/delivery/script.js" defer></script>
+  </body>
+</html>

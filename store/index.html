@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cliente Tienda | Delivery App</title>
+    <link rel="stylesheet" href="/store/style.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <div>
+        <p class="eyebrow">Cliente 2</p>
+        <h1>App de tienda</h1>
+        <p class="hero-copy">
+          Inicia sesion como administrador, revisa la informacion de tu tienda, cambia su estado y crea productos.
+        </p>
+      </div>
+      <nav class="top-links">
+        <a href="/">Inicio</a>
+        <a href="/consumer">App consumidor</a>
+        <a href="/delivery">App repartidor</a>
+      </nav>
+    </header>
+
+    <main class="page">
+      <section class="card login-card">
+        <div>
+          <h2>Ingreso</h2>
+          <p>Usa un administrador de tienda de prueba.</p>
+          <p class="hint">burger@demo.com / 123456</p>
+          <p class="hint">market@demo.com / 123456</p>
+        </div>
+        <form id="login-form" class="form-grid">
+          <label>
+            Email
+            <input type="email" name="email" value="burger@demo.com" required />
+          </label>
+          <label>
+            Password
+            <input type="password" name="password" value="123456" required />
+          </label>
+          <button type="submit">Entrar como tienda</button>
+        </form>
+      </section>
+
+      <p id="message" class="message" hidden></p>
+
+      <section id="app-shell" class="app-shell" hidden>
+        <section class="card user-card">
+          <div>
+            <p class="eyebrow">Sesion activa</p>
+            <h2 id="user-name">Administrador</h2>
+            <p id="user-email"></p>
+          </div>
+          <div class="actions">
+            <button id="refresh-dashboard" type="button">Recargar datos</button>
+            <button id="logout-button" type="button" class="secondary">Cerrar sesion</button>
+          </div>
+        </section>
+
+        <div class="dashboard-grid">
+          <section class="card">
+            <div class="section-header">
+              <div>
+                <p class="eyebrow">Vista general</p>
+                <h2 id="store-title">Mi tienda</h2>
+              </div>
+            </div>
+            <div id="store-summary" class="store-summary empty-state">Inicia sesion para cargar la tienda.</div>
+          </section>
+
+          <section class="card">
+            <div class="section-header">
+              <div>
+                <p class="eyebrow">Operacion</p>
+                <h2>Estado de la tienda</h2>
+              </div>
+            </div>
+            <div id="store-status-panel" class="stack empty-state">No hay tienda seleccionada.</div>
+          </section>
+        </div>
+
+        <div class="dashboard-grid">
+          <section class="card">
+            <div class="section-header">
+              <div>
+                <p class="eyebrow">Catalogo</p>
+                <h2>Crear producto</h2>
+              </div>
+            </div>
+            <form id="product-form" class="form-grid">
+              <label>
+                Nombre
+                <input type="text" name="name" placeholder="Producto nuevo" required />
+              </label>
+              <label>
+                Precio
+                <input type="number" name="price" min="1" placeholder="12000" required />
+              </label>
+              <label>
+                URL de imagen
+                <input type="url" name="imageUrl" placeholder="https://..." />
+              </label>
+              <button type="submit">Crear producto</button>
+            </form>
+          </section>
+
+          <section class="card">
+            <div class="section-header">
+              <div>
+                <p class="eyebrow">Catalogo actual</p>
+                <h2>Productos de la tienda</h2>
+              </div>
+            </div>
+            <div id="product-list" class="product-list empty-state">Todavia no hay productos.</div>
+          </section>
+        </div>
+      </section>
+    </main>
+
+    <script src="/store/script.js" defer></script>
+  </body>
+</html>

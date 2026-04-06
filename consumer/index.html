@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cliente Consumidor | Delivery App</title>
+    <link rel="stylesheet" href="/consumer/style.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <div>
+        <p class="eyebrow">Cliente 1</p>
+        <h1>App del consumidor</h1>
+        <p class="hero-copy">
+          Inicia sesion, revisa las tiendas, agrega productos al carrito y crea una orden.
+        </p>
+      </div>
+      <nav class="top-links">
+        <a href="/">Inicio</a>
+        <a href="/store">App tienda</a>
+        <a href="/delivery">App repartidor</a>
+      </nav>
+    </header>
+
+    <main class="page">
+      <section class="card login-card">
+        <div>
+          <h2>Ingreso</h2>
+          <p>Usa las credenciales demo del consumidor.</p>
+          <p class="hint">juliana@demo.com / 123456</p>
+        </div>
+        <form id="login-form" class="form-grid">
+          <label>
+            Email
+            <input type="email" name="email" value="juliana@demo.com" required />
+          </label>
+          <label>
+            Password
+            <input type="password" name="password" value="123456" required />
+          </label>
+          <button type="submit">Entrar como consumidor</button>
+        </form>
+      </section>
+
+      <p id="message" class="message" hidden></p>
+
+      <section id="app-shell" class="app-shell" hidden>
+        <section class="card user-card">
+          <div>
+            <p class="eyebrow">Sesion activa</p>
+            <h2 id="user-name">Usuario</h2>
+            <p id="user-email"></p>
+          </div>
+          <div class="actions">
+            <button id="refresh-dashboard" type="button">Recargar datos</button>
+            <button id="logout-button" type="button" class="secondary">Cerrar sesion</button>
+          </div>
+        </section>
+
+        <div class="dashboard-grid">
+          <section class="card">
+            <div class="section-header">
+              <div>
+                <p class="eyebrow">Paso 1</p>
+                <h2>Tiendas</h2>
+              </div>
+            </div>
+            <div id="store-list" class="stack"></div>
+          </section>
+
+          <section class="card">
+            <div class="section-header">
+              <div>
+                <p class="eyebrow">Paso 2</p>
+                <h2 id="selected-store-title">Detalle de tienda</h2>
+              </div>
+            </div>
+            <div id="store-detail" class="store-detail empty-state">
+              Selecciona una tienda para ver sus productos.
+            </div>
+            <div id="product-list" class="product-grid"></div>
+          </section>
+        </div>
+
+        <div class="dashboard-grid">
+          <section class="card">
+            <div class="section-header">
+              <div>
+                <p class="eyebrow">Paso 3</p>
+                <h2>Carrito</h2>
+              </div>
+            </div>
+            <div id="cart-content" class="stack empty-state">Todavia no agregas productos.</div>
+          </section>
+
+          <section class="card">
+            <div class="section-header">
+              <div>
+                <p class="eyebrow">Paso 4</p>
+                <h2>Crear orden</h2>
+              </div>
+            </div>
+            <form id="checkout-form" class="form-grid">
+              <label>
+                Metodo de pago
+                <select name="paymentMethod" required>
+                  <option value="">Selecciona uno</option>
+                  <option value="Tarjeta">Tarjeta</option>
+                  <option value="Efectivo">Efectivo</option>
+                  <option value="Transferencia">Transferencia</option>
+                </select>
+              </label>
+              <label>
+                Direccion
+                <input type="text" name="address" placeholder="Calle 10 # 20-30" required />
+              </label>
+              <button type="submit">Crear orden</button>
+            </form>
+          </section>
+        </div>
+
+        <section class="card">
+          <div class="section-header">
+            <div>
+              <p class="eyebrow">Paso 5</p>
+              <h2>Mis ordenes</h2>
+            </div>
+          </div>
+          <div id="orders-list" class="orders-grid empty-state">No hay ordenes creadas todavia.</div>
+        </section>
+      </section>
+    </main>
+
+    <script src="/consumer/script.js" defer></script>
+  </body>
+</html>
