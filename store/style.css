@@ -23,7 +23,7 @@
 
 body {
   margin: 0;
-  font-family: Georgia, "Trebuchet MS", sans-serif;
+  font-family: "Trebuchet MS", "Segoe UI", sans-serif;
   color: var(--text);
   background:
     radial-gradient(circle at top right, rgba(59, 130, 246, 0.13), transparent 24%),
